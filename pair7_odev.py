@@ -32,8 +32,8 @@ baslik2 = driver.find_elements(By.XPATH,'//*[@title="Senior Yazılım Geliştiri
 baslikText = baslik1.text
 baslikSayisi = len(baslik2)
 sleep(2)
-if baslikText == "Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)":
-    print("Arama testi başarılı!😎", " Toplam Kurs adeti:" + str(baslikSayisi))
+if baslikText == "Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)" and baslikSayisi == 1:
+    print("Arama testi başarılı!😎")
 else:
     print("Arama testi başarısız!❌")
 driver.save_screenshot(str(date.today()) + '(2).png')
