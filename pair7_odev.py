@@ -27,11 +27,13 @@ search = driver.find_element(By.ID,"search-courses")
 search.send_keys("senior")
 sleep(2)
 # Başlığın Senior Yazılım Geliştirici Yetiştirme Kampı (.NET) olup olmadığını sorgular.
-title = driver.find_element(By.XPATH,'//*[@title="Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)"]')
-titleTest = title.text
+baslik1 = driver.find_element(By.XPATH,'//*[@title="Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)"]')
+baslik2 = driver.find_elements(By.XPATH,'//*[@title="Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)"]')
+baslikText = baslik1.text
+baslikSayisi = len(baslik2)
 sleep(2)
-if titleTest == "Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)":
-    print("Arama testi başarılı!😎")
+if baslikText == "Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)":
+    print("Arama testi başarılı!😎", " Toplam Kurs adeti:" + str(baslikSayisi))
 else:
     print("Arama testi başarısız!❌")
 driver.save_screenshot(str(date.today()) + '(2).png')
