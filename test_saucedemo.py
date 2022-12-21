@@ -61,7 +61,7 @@ class Test_Saucedemo:
 
         assert errorMenuSize > 0 
         
-    # -Yanlış bilgiler girildiğinde çıkan uyarı mesajının doğruluğu kontrol edilmelidir Epic sadface: Username and password do not match any user in this service   
+    # -Yanlış bilgiler girildiğinde çıkan uyarı mesajının doğruluğu kontrol edilmelidir: Epic sadface: Username and password do not match any user in this service   
     def test_login_error_message(self):
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         userName= self.driver.find_element(By.ID, USERNAME_ID )
@@ -109,6 +109,7 @@ class Test_Saucedemo:
         
     # -Sepete 1 adet ürün eklendiğinde sağ üstteki sepet üzerinden 1 sayısı çıkmalıdır.
     def test_basket_item_number(self):
+        # Başarılı login fonksiyonunu çağırma
         self.test_login_standart_user()
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, PRODUCT1_ID)))
