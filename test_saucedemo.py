@@ -24,11 +24,11 @@ class Test_Saucedemo:
     def test_login_standart_user(self):
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         userName= self.driver.find_element(By.ID, USERNAME_ID )
-        userName.send_keys("standard_user")
+        userName.send_keys(USERNAME)
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         passwordID= self.driver.find_element(By.ID, PASSWORD_ID )
-        passwordID.send_keys("secret_sauce")
+        passwordID.send_keys(PASSWORD)
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         loginID= self.driver.find_element(By.ID,LOGIN_ID)
@@ -39,17 +39,17 @@ class Test_Saucedemo:
 
         userMenuText=userMenu.text
 
-        assert userMenuText == "Open Menu"
+        assert userMenuText == MENU_TEXT
 
     # -Yanlış bilgiler girildiğinde uyarı çıkıp çıkmadığı test edilmelidir.
     def test_login_undefined(self):
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         userName= self.driver.find_element(By.ID, USERNAME_ID )
-        userName.send_keys("standard_user")
+        userName.send_keys(USERNAME)
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         passwordID= self.driver.find_element(By.ID, PASSWORD_ID )
-        passwordID.send_keys("wrong_password")
+        passwordID.send_keys(WRONG_PASSWORD)
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
         loginID= self.driver.find_element(By.ID,LOGIN_ID)
@@ -61,25 +61,15 @@ class Test_Saucedemo:
 
         assert errorMenuSize > 0 
         
-    # -Yanlış bilgiler girildiğinde çıkan uyarı mesajının doğruluğu kontrol edilmelidir: Epic sadface: Username and password do not match any user in this service   
+    # -Yanlış bilgiler girildiğinde çıkan uyarı mesajının doğruluğu kontrol edilmelidir Epic sadface: Username and password do not match any user in this service   
     def test_login_error_message(self):
-        WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
-        userName= self.driver.find_element(By.ID, USERNAME_ID )
-        userName.send_keys("standard_user")
-
-        WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
-        passwordID= self.driver.find_element(By.ID, PASSWORD_ID )
-        passwordID.send_keys("wrong_password")
-
-        WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, USERNAME_ID )))
-        loginID= self.driver.find_element(By.ID,LOGIN_ID)
-        loginID.click()
+        self.test_login_undefined()
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.XPATH, ERROR_LOGIN)))
         errorMenu= self.driver.find_element(By.XPATH,ERROR_LOGIN)
         errorMenuText = errorMenu.text
 
-        assert errorMenuText == "Epic sadface: Username and password do not match any user in this service"
+        assert errorMenuText == ERROR_MENU_TEXT
         
     # -Ana sayfada 6 adet ürün listelendiği kontrol edilmelidir.
     def test_inventory_list(self):
@@ -105,11 +95,10 @@ class Test_Saucedemo:
         productRemove = self.driver.find_element(By.NAME, PRODUCT_REMOVE_NAME)
         productRemoveText = productRemove.text
 
-        assert productRemoveText == "REMOVE"
+        assert productRemoveText == PRODUCT_REMOVE_TEXT
         
     # -Sepete 1 adet ürün eklendiğinde sağ üstteki sepet üzerinden 1 sayısı çıkmalıdır.
     def test_basket_item_number(self):
-        # Başarılı login fonksiyonunu çağırma
         self.test_login_standart_user()
 
         WebDriverWait(self.driver,5).until(expected_conditions.visibility_of_element_located((By.ID, PRODUCT1_ID)))
@@ -120,4 +109,4 @@ class Test_Saucedemo:
         basket_items = self.driver.find_element(By.CLASS_NAME, BASKET_ITEMS)
         basket_itemsText = basket_items.text
 
-        assert basket_itemsText == "1"
+        assert basket_itemsText == BASKET_ITEMS_COUNT
