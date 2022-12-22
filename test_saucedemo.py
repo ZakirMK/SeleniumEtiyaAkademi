@@ -61,7 +61,7 @@ class Test_Saucedemo:
 
         assert errorMenuSize > 0 
         
-    # -Yanlış bilgiler girildiğinde çıkan uyarı mesajının doğruluğu kontrol edilmelidir Epic sadface: Username and password do not match any user in this service   
+    # -Yanlış bilgiler girildiğinde çıkan uyarı mesajının doğruluğu kontrol edilmelidir: "Epic sadface: Username and password do not match any user in this service "  
     def test_login_error_message(self):
         self.test_login_undefined()
 
@@ -82,7 +82,7 @@ class Test_Saucedemo:
 
         assert inventorySize == 6
 
-    # -Sepete Ekle butonuna tıklandığında butonun texti REMOVE olmalıdır.
+    # -Sepete Ekle butonuna tıklandığında butonun texti "REMOVE" olmalıdır.
     def test_basket(self):
         # Başarılı login fonksiyonunu çağırma
         self.test_login_standart_user()
@@ -97,7 +97,7 @@ class Test_Saucedemo:
 
         assert productRemoveText == PRODUCT_REMOVE_TEXT
         
-    # -Sepete 1 adet ürün eklendiğinde sağ üstteki sepet üzerinden 1 sayısı çıkmalıdır.
+    # -Sepete 1 adet ürün eklendiğinde sağ üstteki sepet üzerinden "1" sayısı çıkmalıdır.
     def test_basket_item_number(self):
         self.test_login_standart_user()
 
