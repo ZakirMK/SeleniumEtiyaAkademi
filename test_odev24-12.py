@@ -300,7 +300,7 @@ class Test_Saucedemo24_12:
         removeChart = self.driver.find_element(By.NAME, REMOVE_CART_LABS_BACKPACK_NAME)
         removeChart.click()
 
-        WebDriverWait(self.driver,5).until(expected_conditions.invisibility_of_element_located((By.XPATH, BASKET_ITEM_REMOVE))) # Sitenin yapısı gereği ürün sepetten kaldırıldığında, ürün ile ilgili 'class' oluyor.
+        WebDriverWait(self.driver,5).until(expected_conditions.invisibility_of_element_located((By.XPATH, BASKET_ITEM_REMOVE))) # Sitenin yapısı gereği ürün sepetten kaldırıldığında, ürün ile ilgili 'class' görünmez oluyor.
         basket_items = self.driver.find_elements(By.XPATH, BASKET_ITEM_REMOVE)
         sizeBasket = len(basket_items)
         assert sizeBasket > 0
