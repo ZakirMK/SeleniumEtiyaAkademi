@@ -10,7 +10,7 @@ from constants24aralik import *
 import openpyxl
 import pytest
 
-class Test_Saucedemo23_12:
+class Test_Saucedemo24_12:
     def readProductNameFromExcel():
         excelFile = openpyxl.load_workbook("data/productNames.xlsx")
         selectedSheet = excelFile["Sheet1"]
