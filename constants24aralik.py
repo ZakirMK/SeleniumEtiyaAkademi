@@ -16,6 +16,7 @@ USER_MENU = "react-burger-menu-btn"
 
 INVENTORY_ITEM = '//*[@class="inventory_item"]'
 INVENTORY_ITEM_NAME = '//*[@class="inventory_item_name"]'
+INVENTORY_ITEM_PRICE = '//*[@class="inventory_item_price"]'
 
 INV_PRODUCTNAME1 = "Sauce Labs Bike Light"
 INV_PRODUCTNAME2 = "Sauce Labs Bolt T-Shirt"
