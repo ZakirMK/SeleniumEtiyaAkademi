@@ -103,11 +103,10 @@ class Test_Saucedemo24_12:
             sizeItem = len(item)
             
             assert sizeItem > 0
-        
+            
+        # Excel'e eklenilecek yeni ürün isimlerini test etmeden önce testte tanımlamamız gerekir.
         else :
-            # Excel'e böyle bir ürün ismi yazılamıyacağı için, dolayısıyla test hata verecektir. 
-            # Excel'e eklenilecek yeni ürün isimlerini test etmeden önce testte tanımlamamız gerekir. 
-            assert productName == "d1dasdawdsdq12eqwdwads" 
+            return False 
 
     # "locked_out_user" ile giriş yapıldığında verilen uyarı mesajının doğrulanması testi
     def test_lockedOutUser(self):
@@ -263,11 +262,10 @@ class Test_Saucedemo24_12:
             sizeBasket = len(basket_items)
             
             assert sizeBasket > 0
-        
-        else :
-            # Excel'e böyle bir ürün ismi yazılamıyacağı için, dolayısıyla test hata verecektir. 
-            # Excel'e eklenilecek yeni ürün isimlerini test etmeden önce testte tanımlamamız gerekir. 
-            assert productName == "d1dasdawdsdq12eqwdwads" 
+            
+        # Excel'e eklenilecek yeni ürün isimlerini test etmeden önce testte tanımlamamız gerekir. 
+        else : 
+            return False 
         
     # Sepete eklenen ürünlerin sepet sayfasında doğru bir şekilde görünmesi testi
     def test_productToBasket(self):
